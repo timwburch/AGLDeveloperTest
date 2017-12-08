@@ -12,12 +12,21 @@
    </style>
 </head>
 <body>
-   <button type="button">
+   <h1>Cat-e-gorizer</h1>
+   <input class="pets-source" type="url" value="http://agl-developer-test.azurewebsites.net/people.json" />
+   <button type="button" onclick="CATegorize()">
       Get the cats and Cat-e-gorize them!
    </button>
-   <div class="cat-egories">
-
-   </div>
+   <section class="cat-egories">
+      <div class="gender-group">
+         <h2>Female</h2>
+         <ul class="catsWithFemaleOwners"></ul>
+      </div>
+      <div class="gender-group">
+         <h2>Male</h2>
+         <ul class="catsWithMaleOwners"></ul>
+      </div>
+   </section>
 
    <script src="src/js/cat-e-gorizer.js"></script>
 </body>

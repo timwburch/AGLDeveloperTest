@@ -1,13 +1,79 @@
 
-const catHerder = (endpoint) => {
-   fetch(endpoint).then((response) => {
-     if(response.ok) {
-       return response.json();
-     }
-     throw new Error('Could not fetch cats...');
-   }).then((data) => {
-     console.log(data);
+const fetchPets = (endpoint) => {
+   return fetch(endpoint).then((response) => {
+      if(response.ok) {
+         return response.json();
+      }
+      throw new Error('Could not fetch pets...');
    }).catch((error) => {
-     console.log('There was a problem fetching the cats: ' + error.message);
+      console.log('There was a problem fetching the pets: ' + error.message);
    });
 }
+
+const filterByOwnersGender = (list, gender) => {
+   return list.filter((item) =>{
+      return item.gender === gender;
+   })
+};
+
+const filterPetByType = (list,type) => {
+   let filteredPets = [];
+   list.map((item) => {
+      if (!item.hasOwnProperty('pets') || item.pets === null) return false;
+      const petsList = item.pets;
+      petsList.map((pet) => {
+         if (pet.type === type ) filteredPets.push(pet);
+         return pet.type === type;
+      });
+   });
+   return filteredPets;
+};
+
+const sortPetsByName = (petA, petB) => {
+   const petNameA = petA.name;
+   const petNameB = petB.name;
+   return (petNameA < petNameB) ? -1 : (petNameA > petNameB) ? 1 : 0;
+};
+
+const addCatsToList = (cats, element) => {
+   cats.forEach((item) => {
+      let catItem = document.createElement("li");
+      catItem.innerHTML = item.name;
+      console.log(item, item.name, catItem);
+      element.appendChild(catItem);
+   });
+}
+
+const CATegorize = () => {
+   // const endpoint = 'http://agl-developer-test.azurewebsites.net/people.json';
+   const endpoint = document.querySelector('.pets-source').value;
+   const fetchedPets = fetchPets(endpoint).then((data) => {
+      const femaleOwners = filterByOwnersGender(data, 'Female');
+      const maleOwners = filterByOwnersGender(data, 'Male');
+
+      let catsWithFemaleOwners = filterPetByType(femaleOwners, 'Cat');
+      let catsWithMaleOwners = filterPetByType(maleOwners, 'Cat');
+      catsWithFemaleOwners.sort(sortPetsByName);
+      catsWithMaleOwners.sort(sortPetsByName);
+
+      const catListHolder = document.querySelector('.cat-egories');
+      let catsWithFemaleOwnersList = document.querySelector('.catsWithFemaleOwners');
+      let catsWithMaleOwnersList = document.querySelector('.catsWithMaleOwners');
+
+      addCatsToList(catsWithFemaleOwners, catsWithFemaleOwnersList);
+      addCatsToList(catsWithMaleOwners, catsWithMaleOwnersList);
+
+      // catsWithFemaleOwners.forEach((item) => {
+      //    let catItem = document.createElement("li");
+      //    catItem.innerHtml = item.name;
+      //    catsWithFemaleOwners.appendChild(catItem);
+      // });
+      //
+      // catsWithMaleOwners.forEach((item) => {
+      //    let catItem = document.createElement("li");
+      //    catItem.innerHtml = item.name;
+      //    catsWithMaleOwnersList.appendChild(catItem);
+      // });
+
+   });
+};

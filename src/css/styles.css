@@ -9,6 +9,7 @@ html {
 }
 
 body {
+   color: DARKSLATEGREY;
    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
    font-size: 16px;
    font-size: 1.6rem;
@@ -24,6 +25,7 @@ body {
 
 button {
    padding: 2rem;
+   margin: 2rem;
 
    color: WHITE;
    background-color: DEEPSKYBLUE;
@@ -45,4 +47,17 @@ button:hover {
    background-color: ALICEBLUE;
    transform: translate(0%, -0.5rem);
    box-shadow: 0 0.5rem 2.5rem rgba(0, 0, 0, 0.15), inset 0 0 0 0.1rem DEEPSKYBLUE;
+}
+
+input[type=url] {
+    padding: 1.5rem;
+    min-width: 50%;
+    text-align: center;
+    margin: 3rem;
+}
+
+.cat-egories {
+    display: flex;
+    justify-content: space-around;
+    min-width: 50%;
 }
