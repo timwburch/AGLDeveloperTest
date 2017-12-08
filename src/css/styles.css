@@ -1,0 +1,48 @@
+html, body {
+   height: 100%;
+   margin: 0;
+   padding: 0;
+}
+
+html {
+   font-size:62.5%;
+}
+
+body {
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-size: 16px;
+   font-size: 1.6rem;
+   line-height: 2.8rem;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+
+   display: flex;
+   flex-flow: column;
+   justify-content: center;
+   align-items: center;
+}
+
+button {
+   padding: 2rem;
+
+   color: WHITE;
+   background-color: DEEPSKYBLUE;
+
+   border: none;
+   box-shadow: 0 0rem 0rem rgba(0, 0, 0, 0.15), inset 0 0 0 0 DEEPSKYBLUE;
+   transform: translate(0%, 0rem);
+   cursor: pointer;
+
+   -webkit-transition: all 0.3s ease;
+   -o-transition: all 0.3s ease;
+   transition: all 0.3s ease;
+}
+
+button:hover {
+   /*color: DIMGRAY;*/
+   color: DEEPSKYBLUE;
+   /*background-color: LIGHTSKYBLUE;*/
+   background-color: ALICEBLUE;
+   transform: translate(0%, -0.5rem);
+   box-shadow: 0 0.5rem 2.5rem rgba(0, 0, 0, 0.15), inset 0 0 0 0.1rem DEEPSKYBLUE;
+}
