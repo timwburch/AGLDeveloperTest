@@ -39,7 +39,6 @@ const addCatsToList = (cats, element) => {
    cats.forEach((item) => {
       let catItem = document.createElement("li");
       catItem.innerHTML = item.name;
-      console.log(item, item.name, catItem);
       element.appendChild(catItem);
    });
 }
@@ -48,11 +47,13 @@ const CATegorize = () => {
    // const endpoint = 'http://agl-developer-test.azurewebsites.net/people.json';
    const endpoint = document.querySelector('.pets-source').value;
    const fetchedPets = fetchPets(endpoint).then((data) => {
+
       const femaleOwners = filterByOwnersGender(data, 'Female');
       const maleOwners = filterByOwnersGender(data, 'Male');
 
       let catsWithFemaleOwners = filterPetByType(femaleOwners, 'Cat');
       let catsWithMaleOwners = filterPetByType(maleOwners, 'Cat');
+
       catsWithFemaleOwners.sort(sortPetsByName);
       catsWithMaleOwners.sort(sortPetsByName);
 
@@ -63,17 +64,6 @@ const CATegorize = () => {
       addCatsToList(catsWithFemaleOwners, catsWithFemaleOwnersList);
       addCatsToList(catsWithMaleOwners, catsWithMaleOwnersList);
 
-      // catsWithFemaleOwners.forEach((item) => {
-      //    let catItem = document.createElement("li");
-      //    catItem.innerHtml = item.name;
-      //    catsWithFemaleOwners.appendChild(catItem);
-      // });
-      //
-      // catsWithMaleOwners.forEach((item) => {
-      //    let catItem = document.createElement("li");
-      //    catItem.innerHtml = item.name;
-      //    catsWithMaleOwnersList.appendChild(catItem);
-      // });
 
    });
 };

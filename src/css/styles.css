@@ -9,7 +9,7 @@ html {
 }
 
 body {
-   color: DARKSLATEGREY;
+   color: #222222;
    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
    font-size: 16px;
    font-size: 1.6rem;
@@ -28,10 +28,11 @@ button {
    margin: 2rem;
 
    color: WHITE;
-   background-color: DEEPSKYBLUE;
+   background-color: DODGERBLUE;
 
    border: none;
-   box-shadow: 0 0rem 0rem rgba(0, 0, 0, 0.15), inset 0 0 0 0 DEEPSKYBLUE;
+   border-radius: 0.3rem;
+   box-shadow: 0 0rem 0rem rgba(0, 0, 0, 0.15);
    transform: translate(0%, 0rem);
    cursor: pointer;
 
@@ -41,19 +42,19 @@ button {
 }
 
 button:hover {
-   /*color: DIMGRAY;*/
-   color: DEEPSKYBLUE;
-   /*background-color: LIGHTSKYBLUE;*/
-   background-color: ALICEBLUE;
-   transform: translate(0%, -0.5rem);
-   box-shadow: 0 0.5rem 2.5rem rgba(0, 0, 0, 0.15), inset 0 0 0 0.1rem DEEPSKYBLUE;
+   background-color: DEEPSKYBLUE;
+   transform: translate(0%, -0.2rem);
+   box-shadow: 0 0.5rem 2.5rem rgba(0, 0, 0, 0.15);
 }
 
 input[type=url] {
-    padding: 1.5rem;
-    min-width: 50%;
-    text-align: center;
-    margin: 3rem;
+   min-width: 50%;
+   padding: 1.5rem;
+   margin: 3rem;
+   text-align: center;
+
+   border: 0.1rem solid DEEPSKYBLUE;
+   border-radius: 0.3rem;
 }
 
 .cat-egories {
