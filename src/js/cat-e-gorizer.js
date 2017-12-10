@@ -54,7 +54,6 @@ const addCatsToList = (cats, element) => {
 }
 
 const CATegorize = () => {
-   // const endpoint = 'http://agl-developer-test.azurewebsites.net/people.json';
    const endpoint = document.querySelector('.pets-source').value;
    const fetchedPets = fetchPets(endpoint).then((data) => {
 
