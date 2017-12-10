@@ -22,7 +22,13 @@ const filterPetByType = (list,type) => {
       if (!item.hasOwnProperty('pets') || item.pets === null) return false;
       const petsList = item.pets;
       petsList.map((pet) => {
-         if (pet.type === type ) filteredPets.push(pet);
+         if (pet.type === type ) filteredPets.push(Object.assign({},
+            pet,
+            {
+               ownerName: item.name,
+               ownerAge: item.age,
+               ownerGender: item.gender,
+            }));
          return pet.type === type;
       });
    });
@@ -36,9 +42,13 @@ const sortPetsByName = (petA, petB) => {
 };
 
 const addCatsToList = (cats, element) => {
-   cats.forEach((item) => {
+   cats.forEach((item, index) => {
       let catItem = document.createElement("li");
+      catItem.classList.add('its-a-cat');
       catItem.innerHTML = item.name;
+      catItem.dataset.ownerName = item.ownerName;
+      catItem.dataset.ownerAge = item.ownerAge;
+      catItem.setAttribute('style', 'animation-delay: ' + index * 0.5 + 's');
       element.appendChild(catItem);
    });
 }
@@ -56,6 +66,8 @@ const CATegorize = () => {
 
       catsWithFemaleOwners.sort(sortPetsByName);
       catsWithMaleOwners.sort(sortPetsByName);
+
+      console.log('female', catsWithFemaleOwners,'\nmale', catsWithMaleOwners);
 
       const catListHolder = document.querySelector('.cat-egories');
       let catsWithFemaleOwnersList = document.querySelector('.catsWithFemaleOwners');

@@ -1,3 +1,12 @@
+@-webkit-keyframes NAME-YOUR-ANIMATION {
+   0%    { opacity: 0; transform: translate(0, -50%); }
+   100%  { opacity: 1; transform: translate(0, 0%);}
+}
+@keyframes slide-in {
+   0%    { opacity: 0; transform: translate(0, -50%); }
+   100%  { opacity: 1; transform: translate(0, 0%);}
+}
+
 html, body {
    height: 100%;
    margin: 0;
@@ -19,7 +28,7 @@ body {
 
    display: flex;
    flex-flow: column;
-   justify-content: center;
+   justify-content: flex-start;
    align-items: center;
 }
 
@@ -58,7 +67,64 @@ input[type=url] {
 }
 
 .cat-egories {
-    display: flex;
-    justify-content: space-around;
-    min-width: 50%;
+   display: flex;
+   justify-content: space-around;
+   min-width: 50%;
+}
+
+.gender-group {
+   min-width: 25rem;
+   text-align: center;
+}
+
+.gender-group h2 {
+   border-bottom: 0.1rem solid DEEPSKYBLUE;
+}
+
+.its-a-cat {
+   position: relative;
+   text-align: left;
+   text-shadow: 0 0rem 0rem rgba(0,0,0,0.15);
+   cursor: pointer;
+   opacity: 0;
+   /*transform: translate(0, -50%);*/
+   animation: slide-in 0.5s forwards;
+   -webkit-transition: all 0.3s ease;
+   -o-transition: all 0.3s ease;
+   transition: all 0.3s ease;
+}
+
+.its-a-cat:hover {
+   text-shadow: 0 0.25rem 0.25rem rgba(0,0,0,0.35);
+}
+
+.its-a-cat:after {
+   content: 'Owner name: ' attr(data-owner-name) '\00000A Owner age: ' attr(data-owner-age);
+   position: absolute;
+   top: 105%;
+   left: 50%;
+   min-width: 19rem;
+   min-height: 0rem;;
+   transform: translate(1rem, 1rem);
+   display: block;
+   white-space: pre-line;
+   padding: 0.5rem;
+   background: SKYBLUE;
+   border: 1px solid DEEPSKYBLUE;
+   overflow: hidden;
+   opacity: 0;
+   text-shadow: 0 0rem 0rem rgba(0,0,0,0.15);
+   box-shadow: 0 0rem 0rem rgba(0,0,0,0.15);
+   -webkit-transition: all 0.3s ease;
+   -o-transition: all 0.3s ease;
+   transition: all 0.3s ease;
+   z-index: 1;
+}
+
+.its-a-cat:hover:after {
+   min-width: 20rem;
+   min-height: auto;
+   opacity: 1;
+   box-shadow: 0 1rem 2rem rgba(0,0,0,0.15);
+   transform: translate(0rem, 0rem);
 }
