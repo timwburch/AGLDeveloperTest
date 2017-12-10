@@ -66,8 +66,6 @@ const CATegorize = () => {
       catsWithFemaleOwners.sort(sortPetsByName);
       catsWithMaleOwners.sort(sortPetsByName);
 
-      console.log('female', catsWithFemaleOwners,'\nmale', catsWithMaleOwners);
-
       const catListHolder = document.querySelector('.cat-egories');
       let catsWithFemaleOwnersList = document.querySelector('.catsWithFemaleOwners');
       let catsWithMaleOwnersList = document.querySelector('.catsWithMaleOwners');
