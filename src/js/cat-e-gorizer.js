@@ -12,7 +12,7 @@ const fetchPets = (endpoint) => {
 
 const filterByOwnersGender = (list, gender) => {
    return list.filter((item) =>{
-      return item.gender === gender;
+      return item.gender.toLowerCase() === gender.toLowerCase();
    })
 };
 
@@ -22,14 +22,15 @@ const filterPetByType = (list,type) => {
       if (!item.hasOwnProperty('pets') || item.pets === null) return false;
       const petsList = item.pets;
       petsList.map((pet) => {
-         if (pet.type === type ) filteredPets.push(Object.assign({},
+         if (pet.type.toLowerCase() === type.toLowerCase() ) {
+            filteredPets.push(Object.assign({},
             pet,
             {
                ownerName: item.name,
                ownerAge: item.age,
                ownerGender: item.gender,
             }));
-         return pet.type === type;
+         }
       });
    });
    return filteredPets;
